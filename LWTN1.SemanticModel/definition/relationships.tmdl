@@ -1,0 +1,4 @@
+relationship 4de605b9-bab8-37bf-8387-053f610204f9
+	fromColumn: 'Failed Banks'.'Closing Date '
+	toColumn: Calendar.Date
+

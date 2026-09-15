@@ -1,0 +1,77 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "898cb8afe147006aa445",
+  "position": {
+    "x": 968.94157493649448,
+    "y": 508.85690093141403,
+    "z": 2000,
+    "height": 556.00338696020322,
+    "width": 929.92379339542754,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Failed Banks"
+                    }
+                  },
+                  "Property": "State "
+                }
+              },
+              "queryRef": "Failed Banks.State ",
+              "nativeQueryRef": "State ",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Failed Banks"
+                    }
+                  },
+                  "Property": "City "
+                }
+              },
+              "queryRef": "Failed Banks.City ",
+              "nativeQueryRef": "City ",
+              "active": false
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Failed Banks"
+                        }
+                      },
+                      "Property": "Bank Name "
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "Min(Failed Banks.Bank Name )",
+              "nativeQueryRef": "Count of Bank Name "
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

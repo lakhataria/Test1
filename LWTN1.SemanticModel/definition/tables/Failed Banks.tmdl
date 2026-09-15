@@ -1,0 +1,71 @@
+table 'Failed Banks'
+	lineageTag: d90a671e-7655-45c8-9ffe-864c0dc31583
+
+	column 'Bank Name '
+		dataType: string
+		lineageTag: ab09b528-c208-4201-8925-fa4ff6e2391f
+		summarizeBy: none
+		sourceColumn: "Bank Name "
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'City '
+		dataType: string
+		lineageTag: 18f0b7de-f76e-4c65-9264-6519a068390a
+		summarizeBy: none
+		sourceColumn: "City "
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'State '
+		dataType: string
+		lineageTag: d7c4b934-4137-41a1-8626-266f13e73605
+		summarizeBy: none
+		sourceColumn: "State "
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Acquiring Institution '
+		dataType: string
+		lineageTag: 6cf25c09-525f-493d-b43e-6c1b85164302
+		summarizeBy: none
+		sourceColumn: "Acquiring Institution "
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Closing Date '
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cfc758d5-96fe-41d0-9f42-3edbb1b005d9
+		summarizeBy: none
+		sourceColumn: "Closing Date "
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'City State'
+		dataType: string
+		lineageTag: a29cf1bf-7876-4623-8d64-24a9a6365db8
+		dataCategory: Place
+		summarizeBy: none
+		sourceColumn: City State
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Failed Banks' = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(Web.Contents("https://www.fdic.gov/bank-failures/download-data.csv"), [Delimiter = ",", Columns = 7, Encoding = 1252]),
+				  #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				  #"Changed column type" = Table.TransformColumnTypes(#"Promoted headers", {{"Bank Name ", type text}, {"City ", type text}, {"State ", type text}, {"Cert ", Int64.Type}, {"Acquiring Institution ", type text}, {"Closing Date ", type date}, {"Fund", Int64.Type}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed column type",{"Bank Name ", "City ", "State ", "Acquiring Institution ", "Closing Date "}),
+				    #"Inserted Merged Column" = Table.AddColumn(#"Removed Other Columns", "City State", each Text.Combine({[#"City "], ", ", [#"State "]}), type text)
+				in
+				  #"Inserted Merged Column"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

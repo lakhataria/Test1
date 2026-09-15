@@ -1,0 +1,48 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "Failed Banks",
+          "nodeLineageTag": "d90a671e-7655-45c8-9ffe-864c0dc31583",
+          "size": {
+            "height": 317,
+            "width": 245
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 594,
+            "y": 12
+          },
+          "nodeIndex": "Calendar",
+          "nodeLineageTag": "d14b4ae8-737f-4cd2-a879-fa3928f0856a",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

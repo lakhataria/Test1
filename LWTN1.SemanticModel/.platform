@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "LWTN1"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "831f766e-d6ea-4aba-844e-bce823cb85ad"
+  }
+}
