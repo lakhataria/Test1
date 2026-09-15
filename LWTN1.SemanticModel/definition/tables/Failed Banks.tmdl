@@ -1,6 +1,10 @@
 table 'Failed Banks'
 	lineageTag: d90a671e-7655-45c8-9ffe-864c0dc31583
 
+	measure Measure1 = COUNTROWS('Failed Banks')
+		formatString: 0
+		lineageTag: 988d96a1-3637-4163-aa39-ac0124b401ef
+
 	column 'Bank Name '
 		dataType: string
 		lineageTag: ab09b528-c208-4201-8925-fa4ff6e2391f
